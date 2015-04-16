@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     user.is_password?(password) ? user : nil
   end
 
+  def self.find_by_session_token(session_token)
+    User.find_by(session_token: session_token)
+  end
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
