@@ -1,9 +1,16 @@
 <%= render "shared/buttons", name: @track.name %>
 
-<h4><%= @track.standard_or_bonus.capitalize %></h4><br>
+<h5><%= "#{@track.standard_or_bonus.capitalize} Track" %></h5><br>
 
 <% unless @track.lyrics.nil? %>
   <p><%= @track.lyrics %></p>
+<% end %>
+
+<%= render "notes/form", track: @track, user: current_user %>
+
+<% @track.notes.each do |note| %>
+  <p><%= note.note_text %></p>
+  <i>--<%= note.user.name %></i><br>
 <% end %>
 
 <%= render "tracklist", track: @track %>
