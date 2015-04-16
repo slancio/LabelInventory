@@ -17,4 +17,5 @@ class Track < ActiveRecord::Base
   validates :album_id, presence: true
 
   belongs_to :album, dependent: :destroy
+  has_many :notes
 end
