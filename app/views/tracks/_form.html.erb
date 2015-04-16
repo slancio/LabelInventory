@@ -1,0 +1,34 @@
+<% action = (track.persisted? ? track_url(track) : tracks_url) %>
+<% method = (track.persisted? ? :patch : :post) %>
+
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <%= auth_token %>
+
+  <label for="name">Track Title:</label>&nbsp;
+  <input name="track[name]" id="name" type="text" value="<%= track.name %>"><br><br>
+
+  <label for="album">Album</label>
+  <select name="track[album_id]" id="album">
+    <option></option>
+    <% Album.all.each do |album| %>
+      <option <%= track.album_id == album.id ? "selected" : "" %> value="<%= album.id %>"><%= album.name %></option>
+    <% end %>
+  </select>
+  <br><br>
+
+  <input type="radio" name="track[standard_or_bonus]" value="standard" id="standard track" <%= "checked" unless track.standard_or_bonus == "bonus" %>>
+  <label for="standard track">Standard Track</label>
+  <input type="radio" name="track[standard_or_bonus]" value="bonus" id="bonus track" <%= track.standard_or_bonus == "bonus" ? "checked" : "" %>>
+  <label for="bonus track">Bonus Track</label>
+  <br><br>
+
+  <label>
+    Lyrics
+    <textarea name="track[lyrics]"><%= track.lyrics %></textarea>
+  </label><br><br>
+
+
+  <input type="submit" value="Submit">
+</form>
+

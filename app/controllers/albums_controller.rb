@@ -21,7 +21,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to album_url(@album)
     else
-      flash.now[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @album.errors.full_messages
       render :new
     end
   end
@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to album_url(@album)
     else
-      flash.now[:errors] = @band.errors.full_messages
+      flash.now[:errors] = @album.errors.full_messages
       render :update
     end
   end
