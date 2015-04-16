@@ -1,0 +1,11 @@
+<% if !current_user.nil? %>
+  Welcome <% current_user.email %>
+  <form action="<% logout_url %>" method="POST">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="DELETE">
+    <button>Logout</button>
+  </form>
+<% else %>
+  <a href="<% new_session_url %>"><button>Login</button></a>
+  <a href="<% new_user_url %>"><button>Sign Up</button></a>
+<% end %>
