@@ -1,0 +1,12 @@
+<%= render "shared/buttons", name: @album.name %>
+
+<% @album.tracks.each do |track| %>
+  <a href="<%= track_url(track) %>"><%= track.name %></a><br>
+<% end %>
+
+<br><br>
+<a href="<%= new_track_url %>">
+  <button>Add a track</button>
+</a><br><br>
+
+<%= render "albumlist", album: @album %>

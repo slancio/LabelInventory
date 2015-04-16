@@ -1,7 +1,11 @@
-<h3><%= Band.find(params[:id]).name %></h3>
+<%= render "shared/buttons", name: @band.name %>
 
-<%= render "shared/edit_button" %>
+<% @band.albums.each do |album| %>
+  <a href="<%= album_url(album) %>"><%= album.name %></a><br>
+<% end %>
+
 <br><br>
-<%= render "shared/remove_button" %>
-<br>
+<a href="<%= new_album_url %>">
+  <button>Add an album</button>
+</a><br><br>
 <%= render "shared/band_index_button" %>

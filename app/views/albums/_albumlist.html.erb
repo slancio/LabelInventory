@@ -1,0 +1,5 @@
+<% unless album.band.nil? %>
+<a href="<%= band_url(album.band) %>">
+  <button><%= album.band.name %> album list</button>
+  </a>
+<% end %>
