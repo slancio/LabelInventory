@@ -1,0 +1,6 @@
+<% model_name = controller.controller_name.singularize %>
+<form action="<%= send "#{model_name}_url" %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="DELETE">
+  <button>Remove <%= model_name.capitalize %></button>
+</form>

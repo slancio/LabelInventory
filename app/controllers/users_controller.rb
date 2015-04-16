@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
-  before_action :prevent_double_login
+  before_action :require_sign_in, only: [:show]
+  before_action :require_no_user!, except: [:show]
 
   def new
-    @user = User.new
     render :new
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       log_in_user!(@user)
-      redirect_to user_url
+      redirect_to user_url(@user)
     else
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
   end
@@ -25,10 +26,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password)
-    end
-
-    def prevent_double_login
-      redirect_to user_url unless current_user.nil?
     end
 
 end

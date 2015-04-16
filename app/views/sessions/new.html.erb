@@ -1,0 +1,9 @@
+<h3>Log in</h3>
+
+<form action="<%= session_url %>" method="post">
+  <%= auth_token %>
+
+  <%= render "shared/email_password" %>
+  
+  <input type="submit" value="Log in">
+</form>
