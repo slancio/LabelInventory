@@ -8,7 +8,6 @@ class AlbumsController < ApplicationController
 
   def new
     @album = Album.new
-    fail
     render :new
   end
 

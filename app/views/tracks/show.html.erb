@@ -6,11 +6,8 @@
   <p><%= @track.lyrics %></p>
 <% end %>
 
-<%= render "notes/form", track: @track, user: current_user %>
+<%= render "notes/form", track_id: @track.id %>
 
-<% @track.notes.each do |note| %>
-  <p><%= note.note_text %></p>
-  <i>--<%= note.user.name %></i><br>
-<% end %>
+<%= render "notes/note", track: @track %>
 
 <%= render "tracklist", track: @track %>

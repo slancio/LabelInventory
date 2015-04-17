@@ -15,6 +15,6 @@ class Note < ActiveRecord::Base
   validates :track_id, presence: true
   validates :note_text, presence: true
 
-  belongs_to :user, dependent: :destroy
-  belongs_to :track, dependent: :destroy
+  belongs_to :user
+  belongs_to :track
 end

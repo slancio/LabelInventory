@@ -16,6 +16,6 @@ class Track < ActiveRecord::Base
   validates :standard_or_bonus, inclusion: { in: %w(standard bonus) }
   validates :album_id, presence: true
 
-  belongs_to :album, dependent: :destroy
-  has_many :notes
+  belongs_to :album
+  has_many :notes, dependent: :destroy
 end
