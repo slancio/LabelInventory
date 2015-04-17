@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :require_sign_in
 
   def new
     @note = Note.new
