@@ -3,7 +3,7 @@
 <h5><%= "#{@track.standard_or_bonus.capitalize} Track" %></h5><br>
 
 <% unless @track.lyrics.nil? %>
-  <p><%= @track.lyrics %></p>
+  <p><%= ugly_lyrics(@track.lyrics) %></p>
 <% end %>
 
 <%= render "notes/form", track_id: @track.id %>

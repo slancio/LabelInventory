@@ -27,8 +27,8 @@ class TracksController < ApplicationController
   end
 
   def update
-    @track = Track.update(track_params)
-    if @track.save
+    @track = Track.find(params[:id])
+    if @track.update(track_params)
       redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages

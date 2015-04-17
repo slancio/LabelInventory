@@ -1,6 +1,6 @@
 <%= render "shared/buttons", name: @album.name %>
 
-<% @album.tracks.each do |track| %>
+<% @album.tracks.order(:created_at).each do |track| %>
   <a href="<%= track_url(track) %>"><%= track.name %></a><br>
 <% end %>
 
